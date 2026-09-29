@@ -1,0 +1,5 @@
+#mi_boton{
+    background-color: red; /*Color fondo */
+    color:rgb(127, 214, 255); /*Azul agua para el texto */
+    font-size: 16px;
+}
