@@ -1,42 +1,85 @@
-function calcular(operacion) {
-    const num1 = parseFloat(document.getElementById('num1').value);
-    const num2 = parseFloat(document.getElementById('num2').value);
-    const resultadoInput = document.getElementById('resultado');
+function sumar() {
+    const numero1 = document.getElementById("numero1").value;
+    const numero2 = document.getElementById("numero2").value;
 
-    if (isNaN(num1) || isNaN(num2)) {
-        resultadoInput.value = 'Ingresa números válidos';
+    console.log("Número 1: ", numero1);
+    console.log("Número 2: ", numero2);
+
+    if (numero1 === "" || numero2 === "") {
+        document.getElementById("resultado").value = "Ingresa ambos números";
+        console.log("Error: Ingresa ambos números");
         return;
     }
 
-    let resultado;
+    const suma = parseFloat(numero1) + parseFloat(numero2);
+    document.getElementById("resultado").value = suma;
+    console.log("Resultado suma: ", suma);
+}
 
-    switch (operacion) {
-        case '+':
-            resultado = num1 + num2;
-            break;
-        case '-':
-            resultado = num1 - num2;
-            break;
-        case '*':
-            resultado = num1 * num2;
-            break;
-        case '/':
-            if (num2 === 0) {
-                resultadoInput.value = 'Error: No se puede dividir entre cero';
-                return;
-            }
-            resultado = num1 / num2;
-            break;
-        default:
-            return;
+function restar() {
+    const numero1 = document.getElementById("numero1").value;
+    const numero2 = document.getElementById("numero2").value;
+
+    console.log("Número 1: ", numero1);
+    console.log("Número 2: ", numero2);
+
+    if (numero1 === "" || numero2 === "") {
+        document.getElementById("resultado").value = "Ingresa ambos números";
+        console.log("Error: Ingresa ambos números");
+        return;
     }
 
-    resultadoInput.value = Number(resultado.toFixed(8));
+    const resta = parseFloat(numero1) - parseFloat(numero2);
+    document.getElementById("resultado").value = resta;
+    console.log("Resultado resta: ", resta);
+}
+
+function multiplicar() {
+    const numero1 = document.getElementById("numero1").value;
+    const numero2 = document.getElementById("numero2").value;
+
+    console.log("Número 1: ", numero1);
+    console.log("Número 2: ", numero2);
+
+    if (numero1 === "" || numero2 === "") {
+        document.getElementById("resultado").value = "Ingresa ambos números";
+        console.log("Error: Ingresa ambos números");
+        return;
+    }
+
+    const multiplicacion = parseFloat(numero1) * parseFloat(numero2);
+    document.getElementById("resultado").value = multiplicacion;
+    console.log("Resultado multiplicación: ", multiplicacion);
+}
+
+function dividir() {
+    const numero1 = document.getElementById("numero1").value;
+    const numero2 = document.getElementById("numero2").value;
+
+    console.log("Número 1: ", numero1);
+    console.log("Número 2: ", numero2);
+
+    if (numero1 === "" || numero2 === "") {
+        document.getElementById("resultado").value = "Ingresa ambos números";
+        console.log("Error: Ingresa ambos números");
+        return;
+    }
+
+    if (parseFloat(numero2) === 0) {
+        document.getElementById("resultado").value = "Error: No se puede dividir entre cero";
+        console.log("Error: No se puede dividir entre cero");
+        return;
+    }
+
+    const division = parseFloat(numero1) / parseFloat(numero2);
+    document.getElementById("resultado").value = division;
+    console.log("Resultado división: ", division);
 }
 
 function limpiar() {
-    document.getElementById('num1').value = '';
-    document.getElementById('num2').value = '';
-    document.getElementById('resultado').value = '';
-    document.getElementById('num1').focus();
+    document.getElementById("numero1").value = "";
+    document.getElementById("numero2").value = "";
+    document.getElementById("resultado").value = "";
+    document.getElementById("numero1").focus();
+    console.log("Campos limpiados");
 }
