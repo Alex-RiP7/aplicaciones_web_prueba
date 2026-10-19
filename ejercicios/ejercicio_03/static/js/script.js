@@ -1,38 +1,42 @@
-// ESTRUCTURA DE UNA FUNCION BASE O TRADICIONAL
-function sumar(numero1, numero2){
-    return numero1 + numero2;
-} 
+function calcular(operacion) {
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
+    const resultadoInput = document.getElementById('resultado');
 
-// ESTRUCTURA CON FLECHA
-const restar = (numero1, numero2) => numero1 - numero2;
+    if (isNaN(num1) || isNaN(num2)) {
+        resultadoInput.value = 'Ingresa números válidos';
+        return;
+    }
 
-// TIPOS DE DATOS PRIMITIVOS
-const texto = "Hola Mundo"; 
-const numero = 42;
-const boleano = true;
-const nulos = null;
+    let resultado;
 
-// ARREGLOS O LISTAS
-const personas = ["Dejah", "John", "carthoris"];
+    switch (operacion) {
+        case '+':
+            resultado = num1 + num2;
+            break;
+        case '-':
+            resultado = num1 - num2;
+            break;
+        case '*':
+            resultado = num1 * num2;
+            break;
+        case '/':
+            if (num2 === 0) {
+                resultadoInput.value = 'Error: No se puede dividir entre cero';
+                return;
+            }
+            resultado = num1 / num2;
+            break;
+        default:
+            return;
+    }
 
-// OBJETOS LITERALES DICCIONARIOS EN PYTHON
-const persona = {
-    nombre: "Dejah Thoris",
-    email: "dejah@gmail.com",
-    edad: 20,
-    activo: true
-};
+    resultadoInput.value = Number(resultado.toFixed(8));
+}
 
-// VARIABLES
-// const: VARIABLES QUE NO VAN A SER REASIGNADOS
-// let: VARIABLES CUYO VALOR CAMBIARA EN EL TIEMPO
-// var: OBSOLETO, VARIABLE QUE CAMBIAN DE VALOR
-
-//USO DE CONSOLA PARA DEPURACION
-console.log(persona);
-
-console.log("Texto:" ,texto);
-console.log("Nunumero:" ,numero);
-console.log("Booleano:" ,boleano);
-console.log("Nulo:" ,nulos);
-console.log("sumar:" ,10 + 10);
+function limpiar() {
+    document.getElementById('num1').value = '';
+    document.getElementById('num2').value = '';
+    document.getElementById('resultado').value = '';
+    document.getElementById('num1').focus();
+}
